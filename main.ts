@@ -4,23 +4,15 @@ import {Player} from "./player";
 let player1: Player; 
 
 function mainMethod() {
-    playerFunc();
-    logToConsole("PLAYER 1 IS " + player1.getName());
+    playerPromise.then(val => console.log(val));
 }
 
-function playerFunc() {
-    player1 = readFile("player1team.txt");
-
-    if(player1 instanceof Player) {
-        for(let i = 0; i < player1.getDemonListLength(); i++) {
-            console.log(player1.getDemonName(i));
-        }
-    }
-}
-
-function logToConsole(thing: string) {
-    console.log(thing);
-}
+const playerPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        player1 = readFile("player1team.txt");
+        resolve(player1);
+    }, 300);
+});
     //let player2 = readFile("player2team.txt");
 
     
