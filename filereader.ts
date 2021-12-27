@@ -7,15 +7,18 @@ import {Compendium} from "./demons/demoncompendium";
 export function readFile(fileName: string): Player {
     let compendium = new Compendium();
     let readPlayer = true;
-    let player = new Player('');
+    let player!: Player;
 
-    const file = readline.createInterface({
+    /*const file = readline.createInterface({
         input: fs.createReadStream(fileName),
         output: process.stdout,
         terminal: false
-    });
+    });*/
 
-    function readName(line: string): string {
+    let file = fs.readFileSync(fileName,
+        {encoding:'utf8', flag:'r'});
+
+    let readName = function(line: string): string {
         let name = '';
         for(let i = 0; i < line.length; i++)
         {
@@ -28,21 +31,22 @@ export function readFile(fileName: string): Player {
         return name;
     }
 
-    file.on('line', (line) => {
-        //Creates Player object from the first line of the text document
+    let arr = file.split("\r\n");
+    for(let i = 0; i < arr.length; i++)
+    {
         if(readPlayer) {
-            player = new Player(readName(line));
+            player = new Player(readName(arr[i]));
             console.log("PLAYER CREATED!");
             readPlayer = false;
         }
 
         //Creates Demon object if line isn't empty or full of hyphens
-        else if(line.replace(/-|\s+/g, '') != '') {
-            let demon = readName(line);
-            console.log(demon.toUpperCase() + " DEMON CREATED!");
+        else if(arr[i].replace(/-|\s+/g, '') != '') {
+            let demon = readName(arr[i]);
             player.addDemon(compendium.summonDemon(demon));
+            console.log(demon.toUpperCase() + " DEMON CREATED! LIST CONTAINS " + player.getDemonListLength() + " DEMONS!");
         }
-    });
+    }
 
     return player;
 }
