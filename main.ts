@@ -1,21 +1,11 @@
 import {readFile} from "./filereader";
 import {Player} from "./player";
 
-let player1: Player; 
+let player: Player; 
 
 function mainMethod() {
-    playerPromise.then(val => console.log(val));
+    player = readFile("player1team.txt");
+    console.log(player);
 }
-
-const playerPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        player1 = readFile("player1team.txt");
-        resolve(player1);
-    }, 300);
-});
-    //let player2 = readFile("player2team.txt");
-
-    
-    //console.log("PLAYER 2 IS " + player2.getName());
 
 mainMethod();
