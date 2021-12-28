@@ -9,12 +9,6 @@ export function readFile(fileName: string): Player {
     let readPlayer = true;
     let player!: Player;
 
-    /*const file = readline.createInterface({
-        input: fs.createReadStream(fileName),
-        output: process.stdout,
-        terminal: false
-    });*/
-
     let file = fs.readFileSync(fileName,
         {encoding:'utf8', flag:'r'});
 

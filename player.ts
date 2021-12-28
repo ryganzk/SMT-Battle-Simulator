@@ -17,7 +17,7 @@ export class Player {
         this.demonList = [];
     }
 
-    getName() : string {
+    getName(): string {
         return this.name;
     }
 
