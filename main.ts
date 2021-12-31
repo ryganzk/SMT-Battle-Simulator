@@ -4,7 +4,7 @@ import {Player} from "./player";
 let player: Player; 
 
 function mainMethod() {
-    player = readFile("player1team.txt");
+    player = readFile("sampleteam.txt");
     console.log(player);
 }
 
