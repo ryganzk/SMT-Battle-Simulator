@@ -1,9 +1,11 @@
 import {Demon} from "./demon";
+import {Skill} from "./skill";
 
 export class Player {
     name: string;
     hp: number; mp: number; str: number; vit: number; mag: number; agi: number; luc: number;
-    demonList : Demon[];
+    demonList: Demon[];
+    skillList: Skill[];
 
     constructor(name: string) {
         this.name = name;
@@ -15,6 +17,7 @@ export class Player {
         this.agi = 5;
         this.luc = 5;
         this.demonList = [];
+        this.skillList = [];
     }
 
     getName(): string {
@@ -71,5 +74,9 @@ export class Player {
 
     getDemonListLength(): number {
         return this.demonList.length;
+    }
+
+    addSkill(skill: Skill) {
+        this.skillList.push(skill);
     }
 }
