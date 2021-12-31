@@ -1,12 +1,12 @@
 import {Demon} from "../demon";
 
 //TYPES OF DEMONS
-import {Slime} from "./slime";
-import {Pixie} from "./pixie";
-import {Preta} from "./preta";
-import {Onmoraki} from "./onmoraki";
+import {Slime} from "./foul/slime";
+import {Pixie} from "./fairy/pixie";
+import {Preta} from "./haunt/preta";
+import {Onmoraki} from "./raptor/onmoraki";
 
-export class Compendium {
+export class DemonCompendium {
     constructor(){
         
     }

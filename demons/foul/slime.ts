@@ -1,4 +1,4 @@
-import {Demon} from "../demon";
+import {Demon} from "../../demon";
 
 export class Slime extends Demon {
     constructor() {
