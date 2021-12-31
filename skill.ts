@@ -1,7 +1,7 @@
 import {SkillEffects} from "./skill_effects";
 
 export class Skill {
-    name: string; description: string; type: string; unique: string;
+    name: string; description: string; type: string; unique!: string;
     mpCost: number; damage: number[]; accuracy: number; iKChance: number;
     multiTarget: boolean; randomTargets: boolean; strBased: boolean;
     numHits: number[];
