@@ -1,6 +1,10 @@
+import {Skill} from "./skill"
+
 export class Demon {
     name: string;
     hp: number; mp: number; str: number; vit: number; mag: number; agi: number; luc: number;
+    skillList: Skill[];
+
 
     constructor(name: string, hpAmt: number, mpAmt: number, strAmt: number, vitAmt: number, magAmt: number, agiAmt: number, lucAmt: number) {
         this.name = name;
@@ -11,6 +15,7 @@ export class Demon {
         this.mag = magAmt;
         this.agi = agiAmt;
         this.luc = lucAmt;
+        this.skillList = [];
     }
 
     getName(): string {
@@ -55,5 +60,9 @@ export class Demon {
             case ("luc"):
                 this.luc = newStat;
         }
+    }
+
+    addSkill(skill: Skill) {
+        this.skillList.push(skill);
     }
 }
