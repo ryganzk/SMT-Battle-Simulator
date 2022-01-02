@@ -68,6 +68,15 @@ export class Player {
         this.demonList.push(demon);
     }
 
+    getDemon(demon: string) {
+        demon = demon.charAt(0).toUpperCase + demon.substring(1);
+        for(let i = 0; i < this.demonList.length; i++) {
+            if(demon = this.demonList[i].name) {
+                return this.demonList[i];
+            }
+        }
+    }
+
     getDemonName(index: number): string {
         return this.demonList[index].name;
     }
