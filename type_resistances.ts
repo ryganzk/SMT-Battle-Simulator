@@ -4,7 +4,7 @@ export class TypeResistances {
     //Weak: 0
     //Neutral: 1
     //Resist: 2
-    //Block: 3
+    //Null: 3
     //Reflect: 4
     //Drain: 5
 
