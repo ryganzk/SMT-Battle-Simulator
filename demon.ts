@@ -1,6 +1,7 @@
 import {Skill} from "./skill"
 import {TypeResistances} from "./type_resistances";
 import {AilResistances} from "./ail_resistances";
+import {SkillPotential} from "./skill_potential";
 
 export class Demon {
     name: string;
@@ -8,11 +9,13 @@ export class Demon {
     skillList: Skill[];
     typeResistances: TypeResistances;
     ailResistances: AilResistances;
+    skillPotential: SkillPotential; 
 
 
     constructor(name: string, hpAmt: number, mpAmt: number, strAmt: number, vitAmt: number, magAmt: number, agiAmt: number, lucAmt: number,
             typeResistances: TypeResistances,
-            ailResistances: AilResistances) {
+            ailResistances: AilResistances,
+            skillPotential: SkillPotential) {
         this.name = name;
         this.hp = hpAmt;
         this.mp = mpAmt;
@@ -23,6 +26,7 @@ export class Demon {
         this.luc = lucAmt;
         this.typeResistances = typeResistances;
         this.ailResistances = ailResistances;
+        this.skillPotential = skillPotential;
         this.skillList = [];
     }
 
