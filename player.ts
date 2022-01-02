@@ -1,13 +1,21 @@
 import {Demon} from "./demon";
 import {Skill} from "./skill";
+import {TypeResistances} from "./type_resistances";
+import {AilResistances} from "./ail_resistances";
+import {SkillPotential} from "./skill_potential";
+import {PartyMember} from "./party_member";
 
-export class Player {
+export class Player extends PartyMember {
     name: string;
     hp: number; mp: number; str: number; vit: number; mag: number; agi: number; luc: number;
     demonList: Demon[];
     skillList: Skill[];
+    typeResistances: TypeResistances;
+    ailResistances: AilResistances;
+    skillPotential: SkillPotential;
 
     constructor(name: string) {
+        super();
         this.name = name;
         this.hp = 51;
         this.mp = 68;
@@ -18,50 +26,6 @@ export class Player {
         this.luc = 5;
         this.demonList = [];
         this.skillList = [];
-    }
-
-    getName(): string {
-        return this.name;
-    }
-
-    getStat(stat: string): number {
-        switch (stat.toLowerCase()) {
-            case ("hp"):
-                return this.hp;
-            case ("mp"):
-                return this.mp;
-            case ("str"):
-                return this.str;
-            case ("vit"):
-                return this.vit;
-            case ("mag"):
-                return this.mag;
-            case ("agi"):
-                return this.agi;
-            case ("luc"):
-                return this.luc;
-            default:
-                return 0;
-        }
-    }
-
-    setStat(stat: string, newStat: number) {
-        switch (stat.toLowerCase()) {
-            case ("hp"):
-                this.hp = newStat;
-            case ("mp"):
-                this.mp = newStat;
-            case ("str"):
-                this.str = newStat;
-            case ("vit"):
-                this.vit = newStat;
-            case ("mag"):
-                this.mag = newStat;
-            case ("agi"):
-                this.agi = newStat;
-            case ("luc"):
-                this.luc = newStat;
-        }
     }
 
     addDemon(demon: Demon) {
@@ -83,9 +47,5 @@ export class Player {
 
     getDemonListLength(): number {
         return this.demonList.length;
-    }
-
-    addSkill(skill: Skill) {
-        this.skillList.push(skill);
     }
 }
