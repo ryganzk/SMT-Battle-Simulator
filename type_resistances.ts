@@ -1,5 +1,5 @@
 export class TypeResistances {
-    phys: number; fire: number; ice: number; electric: number; force: number; light: number; dark: number;
+    phys: number; fire: number; ice: number; elec: number; force: number; light: number; dark: number;
 
     //Weak: 0
     //Neutral: 1
@@ -8,11 +8,11 @@ export class TypeResistances {
     //Reflect: 4
     //Drain: 5
 
-    constructor(phys, fire, ice, electric, force, light, dark) {
+    constructor(phys: number, fire: number, ice: number, elec: number, force: number, light: number, dark: number) {
         this.phys = phys;
         this.fire = fire;
         this.ice = ice;
-        this.electric = electric;
+        this.elec = elec;
         this.force = force;
         this.light = light;
         this.dark = dark;

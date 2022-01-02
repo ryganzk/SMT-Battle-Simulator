@@ -6,7 +6,7 @@ export class AilResistances {
     //Resist: 2
     //Null: 3
 
-    constructor(seal, chrm, slp, cnfs, psn, mrg) {
+    constructor(seal: number, chrm: number, slp: number, cnfs: number, psn: number, mrg: number) {
         this.seal = seal;
         this.chrm = chrm;
         this.slp = slp;
