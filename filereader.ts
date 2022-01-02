@@ -31,14 +31,14 @@ export function readFile(fileName: string): Player {
         for(let i = 0; i < line.length; i++) {
             if(line[i] != ',') {
                 skillName = skillName.concat(line.charAt(i));
-                console.log("SKILL: ", skillName);
             }
             else {
-                console.log("PLAYER LEARNED THE SKILL ", skillName.toUpperCase());
+                console.log(entity.getName().toUpperCase(), "LEARNED THE SKILL", skillName.toUpperCase());
                 entity.addSkill(createSkill(skillName));
                 skillName = '';
             }
         }
+        console.log(entity.getName().toUpperCase(), "LEARNED THE SKILL", skillName.toUpperCase());
         entity.addSkill(createSkill(skillName));
     }
 
@@ -69,8 +69,9 @@ export function readFile(fileName: string): Player {
             let demName = readPart(arr[i])
             let demon = compendium.summonDemon(demName);
             player.addDemon(demon);
-            console.log(demName.toUpperCase() + " DEMON CREATED! LIST CONTAINS " + player.getDemonListLength() + " DEMONS!");
-            //addSkills(demon);
+            console.log(demName.toUpperCase(), "DEMON CREATED! LIST CONTAINS", player.getDemonListLength(), "DEMONS!");
+            arr[i] = reduceLine(arr[i]).substring(demName.length + 1);
+            readSkills(demon, arr[i]);
         }
     }
 
