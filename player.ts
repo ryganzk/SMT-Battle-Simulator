@@ -24,15 +24,23 @@ export class Player extends PartyMember {
         this.mag = 5;
         this.agi = 5;
         this.luc = 5;
+        this.typeResistances = new TypeResistances(0, 0, 0, 0, 0, 0, 0);
+        this.ailResistances = new AilResistances(0, 0, 0, 0, 0, 0);
+        this.skillPotential = new SkillPotential(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);;
         this.demonList = [];
         this.skillList = [];
+    }
+
+    setResistances(demon: Demon) {
+        this.typeResistances = demon.getAllTypeResistances();
+        this.ailResistances = demon.getAllAilmentResistances();
     }
 
     addDemon(demon: Demon) {
         this.demonList.push(demon);
     }
 
-    getDemon(demon: string) {
+    getDemon(demon: string): Demon {
         demon = demon.charAt(0).toUpperCase + demon.substring(1);
         for(let i = 0; i < this.demonList.length; i++) {
             if(demon = this.demonList[i].name) {
