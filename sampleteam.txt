@@ -1,5 +1,5 @@
-P1 | Level 5 | 8 Mag | Zio, Lunge, Tarukaja
+P1 | Zio, Lunge, Tarukaja | Slime
 ---------------------------------------------------------
-Pixie | Level 5 | 6 Mag | Dia, Patra, Zan, Rakukaja
-Preta | Level 5 | 4 Mag | Beastial Bite, Bufu, Life Drain
-Onmoraki | Level 5 | 2 Mag | Agi, Pulinpa, Mudo
+Pixie | Dia, Patra, Zan, Rakukaja
+Preta | Beastial Bite, Bufu, Life Drain
+Onmoraki | Agi, Pulinpa, Mudo
