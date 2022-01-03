@@ -13,7 +13,7 @@ export function readFile(fileName: string): Player {
     let file = fs.readFileSync(fileName,
         {encoding:'utf8', flag:'r'});
 
-    let readPart = function(line: string): string {
+    let readDemon = function(line: string): string {
         let name = '';
         for(let i = 0; i < line.length; i++)
         {
@@ -26,10 +26,14 @@ export function readFile(fileName: string): Player {
         return name.replace(/ /g,'');
     }
 
-    let readSkills = function(entity: Player | Demon, line: string) {
+    let readSkills = function(entity: Player | Demon, line: string): number {
+        let stringLength = 0;
         let skillName = '';
         for(let i = 0; i < line.length; i++) {
-            if(line[i] != ',') {
+            if (line[i] === '|') {
+                break;
+            }
+            else if(line[i] != ',') {
                 skillName = skillName.concat(line.charAt(i));
             }
             else {
@@ -37,9 +41,11 @@ export function readFile(fileName: string): Player {
                 entity.addSkill(createSkill(skillName));
                 skillName = '';
             }
+            stringLength++;
         }
         console.log(entity.getName().toUpperCase(), "LEARNED THE SKILL", skillName.toUpperCase());
         entity.addSkill(createSkill(skillName));
+        return stringLength;
     }
 
     let createSkill = function(skillName: string) {
@@ -55,18 +61,21 @@ export function readFile(fileName: string): Player {
     for(let i = 0; i < arr.length; i++)
     {
         if(readPlayer) {
-            let playerName = readPart(arr[i])
+            let playerName = readDemon(arr[i])
             player = new Player(playerName);
             arr[i] = reduceLine(arr[i]).substring(playerName.length + 1);
             console.log("PLAYER CREATED!");
             console.log("REDUCED LINE:", arr[i]);
-            readSkills(player, arr[i]);
+            let reduceLength = readSkills(player, arr[i]);
+            arr[i] = arr[i].substring(reduceLength + 1);
+            console.log("REDUCED LINE:", arr[i]);
+            player.setResistances(compendium.summonDemon(readDemon(arr[i])))
             readPlayer = false;
         }
 
         //Creates Demon object if line isn't empty or full of hyphens
         else if(arr[i].replace(/-|\s+/g, '') != '') {
-            let demName = readPart(arr[i])
+            let demName = readDemon(arr[i])
             let demon = compendium.summonDemon(demName);
             player.addDemon(demon);
             console.log(demName.toUpperCase(), "DEMON CREATED! LIST CONTAINS", player.getDemonListLength(), "DEMONS!");
