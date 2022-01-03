@@ -1,7 +1,7 @@
-import {Demon} from "../../demon";
-import {TypeResistances} from "../../type_resistances";
-import {AilResistances} from "../../ail_resistances";
-import {SkillPotential} from "../../skill_potential";
+import {Demon} from "../../structures/characters/demon";
+import {TypeResistances} from "../../structures/resistances/type_resistances";
+import {AilResistances} from "../../structures/resistances/ail_resistances";
+import {SkillPotential} from "../../structures/skills/skill_potential";
 
 export class Slime extends Demon {
     constructor() {

@@ -1,4 +1,4 @@
-import {Skill} from "../../skill";
+import {Skill} from "../../structures/skills/skill";
 
 export class Lunge extends Skill {
     constructor() {

@@ -1,5 +1,5 @@
-import {Skill} from "../../skill";
-import {SkillEffects} from "../../skill_effects";
+import {Skill} from "../../structures/skills/skill";
+import {SkillEffects} from "../../structures/skills/skill_effects";
 
 let lifeDrainEffect = new SkillEffects('hp', 'steal');
 
