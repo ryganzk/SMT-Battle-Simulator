@@ -55,7 +55,15 @@ export class PartyMember {
         }
     }
 
-    getTypeResistance(type: string) {
+    getAllTypeResistances(): TypeResistances {
+        return this.typeResistances;
+    }
+
+    getAllAilmentResistances(): AilResistances {
+        return this.ailResistances;
+    }
+
+    getSpecificTypeResistance(type: string): number {
         switch(type) {
             case "phys":
                 return this.typeResistances.phys;
