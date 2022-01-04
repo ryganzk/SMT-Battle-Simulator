@@ -45,6 +45,30 @@ export function readFile(fileName: string): Player {
         }
     }
 
+    let readBonusStats = function(entity: Player | Demon, line: string): number {
+        let stringLength = 0;
+        let skillName = ''; let statValue = '';
+        for(let i = 0; i < line.length; i++) {
+            if (line[i] === '|') {
+                break;
+            }
+            else if(line[i] >= '0' && line[i] <= '9') {
+                statValue = statValue.concat(line.charAt(i));
+            }
+            else if(line[i] != ',') {
+                skillName = skillName.concat(line.charAt(i));
+            }
+            else {
+                entity.useStatPoints(skillName, parseInt(statValue));
+                skillName = '';
+                statValue = '';
+            }
+            stringLength++;
+        }
+        entity.useStatPoints(skillName, parseInt(statValue));
+        return stringLength;
+    }
+
     let readSkills = function(entity: Player | Demon, line: string): number {
         let stringLength = 0;
         let skillName = '';
@@ -84,16 +108,24 @@ export function readFile(fileName: string): Player {
             player = new Player(playerName);
             arr[i] = reduceLine(arr[i]).substring(playerName.length + 1);
             console.log("PLAYER CREATED!");
+
             let reduceLength = readLevel(player, arr[i]);
             arr[i] = arr[i].substring(reduceLength + 2);
             console.log("REDUCED LINE:", arr[i]);
+
+            reduceLength = readBonusStats(player, arr[i]);
+            arr[i] = arr[i].substring(reduceLength + 1);
+            console.log("REDUCED LINE:", arr[i]);
+
             reduceLength = readSkills(player, arr[i]);
             arr[i] = arr[i].substring(reduceLength + 1);
             console.log("REDUCED LINE:", arr[i]);
+
             let demName = readDemon(arr[i])
             player.setResistances(compendium.summonDemon(demName))
             arr[i] = arr[i].substring(demName.length + 1);
             console.log("REDUCED LINE:", arr[i]);
+
             demName = readDemon(arr[i]);
             player.setPotential(compendium.summonDemon(demName))
             readPlayer = false;
@@ -105,10 +137,16 @@ export function readFile(fileName: string): Player {
             let demon = compendium.summonDemon(demName);
             player.addDemon(demon);
             console.log(demName.toUpperCase(), "DEMON CREATED! LIST CONTAINS", player.getDemonListLength(), "DEMONS!");
+
             arr[i] = reduceLine(arr[i]).substring(demName.length + 1);
             let reduceLength = readLevel(demon, arr[i]);
             arr[i] = arr[i].substring(reduceLength + 2);
             console.log("REDUCED LINE:", arr[i]);
+
+            reduceLength = readBonusStats(demon, arr[i]);
+            arr[i] = arr[i].substring(reduceLength + 1);
+            console.log("REDUCED LINE:", arr[i]);
+
             readSkills(demon, arr[i]);
         }
     }
