@@ -93,7 +93,7 @@ export class SkillCompendium {
             case 'sukunda':
                 return new Sukunda();
             default:
-                throw new Error("A skill with the name \"" + skillName + "\" does not exist!");
+                throw new Error("A SKILL WITH THE NAME \"" + skillName.toUpperCase() + "\" DOES NOT EXIST!");
         }
     }
 }
