@@ -44,18 +44,25 @@ export class PartyMember {
         switch (stat.toLowerCase()) {
             case ("hp"):
                 this.hp = newStat;
+                break;
             case ("mp"):
                 this.mp = newStat;
+                break;
             case ("str"):
                 this.str = newStat;
+                break;
             case ("vit"):
                 this.vit = newStat;
+                break;
             case ("mag"):
                 this.mag = newStat;
+                break;
             case ("agi"):
                 this.agi = newStat;
+                break;
             case ("luc"):
                 this.luc = newStat;
+                break;
         }
     }
 
@@ -66,6 +73,50 @@ export class PartyMember {
         this.statPoints += diff * STAT_POINTS_PER_LEVEL_UP;
         if(this.hpmpPoints < 0 || this.statPoints < 0) {
             throw new Error(this.name.toUpperCase() + "\'S LEVEL HAS FALLEN BELOW THE DEFAULT!");
+        }
+    }
+
+    useStatPoints(stat: string, points: number) {
+        try {
+            switch(stat.toLowerCase()) {
+                case "hp":
+                    this.hp += points;
+                    this.hpmpPoints -= points;
+                    break;
+                case "mp":
+                    this.mp += points;
+                    this.hpmpPoints -= points;
+                    break;
+                case "str":
+                    this.str += points;
+                    this.statPoints -= points;
+                    break;
+                case "vit":
+                    this.vit += points;
+                    this.statPoints -= points;
+                    break;
+                case "mag":
+                    this.mag += points;
+                    this.statPoints -= points;
+                    break;
+                case "agi":
+                    this.agi += points;
+                    this.statPoints -= points;
+                    break;
+                case "luc":
+                    this.luc += points;
+                    this.statPoints -= points;
+                    break;
+                default:
+                    throw new Error("THE STAT \"" + stat + "\" DOES NOT EXIST!");
+            }
+        } finally {
+            if(this.hpmpPoints < 0) {
+                throw new Error(this.name.toUpperCase() + " HAS TOO MANY HP/MP POINTS ALLOCATED!");
+            }
+            else if (this.statPoints < 0) {
+                throw new Error(this.name.toUpperCase() + " HAS TOO MANY STAT POINTS ALLOCATED!");
+            }
         }
     }
 
