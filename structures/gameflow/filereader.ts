@@ -26,6 +26,25 @@ export function readFile(fileName: string): Player {
         return name.replace(/ /g,'');
     }
 
+    let readLevel = function(entity: Player | Demon, line: string): number {
+        let reader = ''; let numString = '';
+        for(let i = 0; i < line.length; i++) {
+            if (line[i] === '|') {
+                console.log(entity.name.toUpperCase(), "LEVEL SET TO", numString);
+                entity.setLevel(parseInt(numString));
+                return reader.length;
+            }
+            else if (reader.toLowerCase() === 'level') {
+                if(line[i] >= '0' && line[i] <= '9') {
+                    numString = numString.concat(line.charAt(i));
+                }
+            }
+            else {
+                reader = reader.concat(line.charAt(i));
+            }
+        }
+    }
+
     let readSkills = function(entity: Player | Demon, line: string): number {
         let stringLength = 0;
         let skillName = '';
@@ -65,8 +84,10 @@ export function readFile(fileName: string): Player {
             player = new Player(playerName);
             arr[i] = reduceLine(arr[i]).substring(playerName.length + 1);
             console.log("PLAYER CREATED!");
+            let reduceLength = readLevel(player, arr[i]);
+            arr[i] = arr[i].substring(reduceLength + 2);
             console.log("REDUCED LINE:", arr[i]);
-            let reduceLength = readSkills(player, arr[i]);
+            reduceLength = readSkills(player, arr[i]);
             arr[i] = arr[i].substring(reduceLength + 1);
             console.log("REDUCED LINE:", arr[i]);
             player.setResistances(compendium.summonDemon(readDemon(arr[i])))
@@ -80,6 +101,9 @@ export function readFile(fileName: string): Player {
             player.addDemon(demon);
             console.log(demName.toUpperCase(), "DEMON CREATED! LIST CONTAINS", player.getDemonListLength(), "DEMONS!");
             arr[i] = reduceLine(arr[i]).substring(demName.length + 1);
+            let reduceLength = readLevel(demon, arr[i]);
+            arr[i] = arr[i].substring(reduceLength + 2);
+            console.log("REDUCED LINE:", arr[i]);
             readSkills(demon, arr[i]);
         }
     }
