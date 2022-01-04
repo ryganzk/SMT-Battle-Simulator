@@ -6,17 +6,12 @@ import {SkillPotential} from "../skills/skill_potential";
 import {PartyMember} from "./party_member";
 
 export class Player extends PartyMember {
-    name: string;
-    hp: number; mp: number; str: number; vit: number; mag: number; agi: number; luc: number;
     demonList: Demon[];
-    skillList: Skill[];
-    typeResistances: TypeResistances;
-    ailResistances: AilResistances;
-    skillPotential: SkillPotential;
 
     constructor(name: string) {
         super();
         this.name = name;
+        this.lvl = 3; 
         this.hp = 51;
         this.mp = 68;
         this.str = 5;
@@ -24,6 +19,8 @@ export class Player extends PartyMember {
         this.mag = 5;
         this.agi = 5;
         this.luc = 5;
+        this.hpmpPoints = 0;
+        this.statPoints = 0;
         this.typeResistances = new TypeResistances(0, 0, 0, 0, 0, 0, 0);
         this.ailResistances = new AilResistances(0, 0, 0, 0, 0, 0);
         this.skillPotential = new SkillPotential(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);;

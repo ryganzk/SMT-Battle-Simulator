@@ -3,9 +3,13 @@ import {TypeResistances} from "../resistances/type_resistances";
 import {AilResistances} from "../resistances/ail_resistances";
 import {SkillPotential} from "../skills/skill_potential";
 
+const HP_MP_POINTS_PER_LEVEL_UP = 8;
+const STAT_POINTS_PER_LEVEL_UP = 5;
+
 export class PartyMember {
     name: string;
-    hp: number; mp: number; str: number; vit: number; mag: number; agi: number; luc: number;
+    lvl: number; hp: number; mp: number; str: number; vit: number; mag: number; agi: number; luc: number;
+    hpmpPoints: number; statPoints: number;
     skillList: Skill[];
     typeResistances: TypeResistances;
     ailResistances: AilResistances;
@@ -52,6 +56,16 @@ export class PartyMember {
                 this.agi = newStat;
             case ("luc"):
                 this.luc = newStat;
+        }
+    }
+
+    setLevel(lvl: number) {
+        let diff = lvl - this.lvl;
+        this.lvl = lvl;
+        this.hpmpPoints += diff * HP_MP_POINTS_PER_LEVEL_UP;
+        this.statPoints += diff * STAT_POINTS_PER_LEVEL_UP;
+        if(this.hpmpPoints < 0 || this.statPoints < 0) {
+            throw new Error(this.name.toUpperCase() + "\'S LEVEL HAS FALLEN BELOW THE DEFAULT!");
         }
     }
 
