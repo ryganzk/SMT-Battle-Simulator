@@ -90,7 +90,12 @@ export function readFile(fileName: string): Player {
             reduceLength = readSkills(player, arr[i]);
             arr[i] = arr[i].substring(reduceLength + 1);
             console.log("REDUCED LINE:", arr[i]);
-            player.setResistances(compendium.summonDemon(readDemon(arr[i])))
+            let demName = readDemon(arr[i])
+            player.setResistances(compendium.summonDemon(demName))
+            arr[i] = arr[i].substring(demName.length + 1);
+            console.log("REDUCED LINE:", arr[i]);
+            demName = readDemon(arr[i]);
+            player.setPotential(compendium.summonDemon(demName))
             readPlayer = false;
         }
 
