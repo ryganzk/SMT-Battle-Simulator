@@ -1,5 +1,5 @@
-P1 | Level 5 | Zio, Lunge, Tarukaja | Slime | Pixie
+P1 | Level 5 | 16 Mp, 6 Agi, 4 Mag | Zio, Lunge, Tarukaja | Slime | Pixie
 ---------------------------------------------------------
-Pixie | Level 5 | Dia, Patra, Zan, Rakukaja
-Preta | Level 5 | Beastial Bite, Bufu, Life Drain
-Onmoraki | Level 5 | Agi, Pulinpa, Mudo
+Pixie | Level 5 | 24 Mp, 15 Mag | Dia, Patra, Zan, Rakukaja
+Preta | Level 5 | 16 Hp, 3 Str, 7 Vit | Bestial Bite, Bufu, Life Drain
+Onmoraki | Level 5 | 8 Hp, 3 Vit, 2 Luc | Agi, Pulinpa, Mudo
