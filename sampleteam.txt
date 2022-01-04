@@ -1,5 +1,5 @@
-P1 | Zio, Lunge, Tarukaja | Slime
+P1 | Level 5 | Zio, Lunge, Tarukaja | Slime
 ---------------------------------------------------------
-Pixie | Dia, Patra, Zan, Rakukaja
-Preta | Beastial Bite, Bufu, Life Drain
-Onmoraki | Agi, Pulinpa, Mudo
+Pixie | Level 5 | Dia, Patra, Zan, Rakukaja
+Preta | Level 5 | Beastial Bite, Bufu, Life Drain
+Onmoraki | Level 5 | Agi, Pulinpa, Mudo
