@@ -1,4 +1,4 @@
-P1 | Level 5 | Zio, Lunge, Tarukaja | Slime
+P1 | Level 5 | Zio, Lunge, Tarukaja | Slime | Pixie
 ---------------------------------------------------------
 Pixie | Level 5 | Dia, Patra, Zan, Rakukaja
 Preta | Level 5 | Beastial Bite, Bufu, Life Drain
