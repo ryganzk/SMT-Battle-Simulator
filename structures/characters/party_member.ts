@@ -96,6 +96,10 @@ export class PartyMember {
         }
     }
 
+    getSkillPotential() {
+        return this.skillPotential;
+    }
+
     addSkill(skill: Skill) {
         this.skillList.push(skill);
     }

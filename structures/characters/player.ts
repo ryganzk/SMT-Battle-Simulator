@@ -33,6 +33,10 @@ export class Player extends PartyMember {
         this.ailResistances = demon.getAllAilmentResistances();
     }
 
+    setPotential(demon: Demon) {
+        this.skillPotential = demon.getSkillPotential();
+    }
+
     addDemon(demon: Demon) {
         this.demonList.push(demon);
     }
