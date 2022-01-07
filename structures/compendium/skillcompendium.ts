@@ -46,9 +46,6 @@ import {Sukunda} from "../../skills/support/sukunda"
 //PASSIVE SKILLS
 
 export class SkillCompendium {
-    constructor(){
-        
-    }
 
     getSkill(skillName: string): Skill {
         switch (skillName.toLowerCase()){

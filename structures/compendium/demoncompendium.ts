@@ -7,9 +7,6 @@ import {Preta} from "../../demons/haunt/preta";
 import {Onmoraki} from "../../demons/raptor/onmoraki";
 
 export class DemonCompendium {
-    constructor(){
-        
-    }
 
     summonDemon(demName: string): Demon {
         switch (demName.toLowerCase()){
@@ -22,7 +19,7 @@ export class DemonCompendium {
             case 'onmoraki':
                 return new Onmoraki();
             default:
-                throw new Error("A demon with the name \"" + demName + "\" does not exist!");
+                throw new Error("A DEMON WITH THE NAME \"" + demName + "\" DOES NOT EXIST!");
         }
     }
 }
