@@ -1,7 +1,7 @@
-import {Skill} from "../../structures/skills/skill";
+import {AttackSkill} from "../../structures/skills/attack_skill";
 
-export class Hama extends Skill {
+export class Hama extends AttackSkill {
     constructor() {
-        super("Hama", "Weak Light attack to 1 foe. Chance of instakill when striking weakness", "Light", 15, [140], 98, 40, [], [], false, false, false, '');
+        super("Hama", "Weak Light attack to 1 foe. Chance of instakill when striking weakness", "Light", 15, "single", [140], 98, 0, 40, [], [], false, '');
     }
 }

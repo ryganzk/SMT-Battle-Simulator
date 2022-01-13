@@ -1,10 +1,10 @@
-import {Skill} from "../../structures/skills/skill";
+import {AilmentSkill} from "../../structures/skills/ailment_skill";
 import {SkillEffects} from "../../structures/skills/skill_effects";
 
-let dustomaEffect = new SkillEffects('mirage', 'inflict');
+let dustomaEffect = new SkillEffects('mirage', 75);
 
-export class Dustoma extends Skill {
+export class Dustoma extends AilmentSkill {
     constructor() {
-        super("Dustoma", "Chance of inflicting Mirage to 1 foe", "Ailm", 10, [], 70, 0, [], [dustomaEffect], false, false, false, '');
+        super("Dustoma", "Chance of inflicting Mirage to 1 foe", 10, "single", [dustomaEffect], '');
     }
 }

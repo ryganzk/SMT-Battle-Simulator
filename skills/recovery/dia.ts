@@ -1,10 +1,10 @@
-import {Skill} from "../../structures/skills/skill";
+import {HealingSkill} from "../../structures/skills/healing_skill";
 import {SkillEffects} from "../../structures/skills/skill_effects";
 
-let diaEffect = new SkillEffects('hp', 'heal slighty');
+let diaEffect = new SkillEffects('hp', 50);
 
-export class Dia extends Skill {
+export class Dia extends HealingSkill {
     constructor() {
-        super("Dia", "Slight HP recovery to 1 ally", "Recv", 8, [], 0, 0, [], [diaEffect], false, false, false, '');
+        super("Dia", "Slight HP recovery to 1 ally", 8, "single", [diaEffect], '');
     }
 }

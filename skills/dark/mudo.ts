@@ -1,7 +1,7 @@
-import {Skill} from "../../structures/skills/skill";
+import {AttackSkill} from "../../structures/skills/attack_skill";
 
-export class Mudo extends Skill {
+export class Mudo extends AttackSkill {
     constructor() {
-        super("Mudo", "Weak Dark attack to 1 foe. Chance of instakill when striking weakness", "Dark", 15, [140], 98, 40, [], [], false, false, false, '');
+        super("Mudo", "Weak Dark attack to 1 foe. Chance of instakill when striking weakness", "Dark", 15, "single", [140], 98, 0, 40, [], [], false, '');
     }
 }

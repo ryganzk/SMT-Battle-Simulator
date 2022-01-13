@@ -1,10 +1,10 @@
-import {Skill} from "../../structures/skills/skill";
+import {AilmentSkill} from "../../structures/skills/ailment_skill";
 import {SkillEffects} from "../../structures/skills/skill_effects";
 
-let poismaEffect = new SkillEffects('poison', 'inflict');
+let poismaEffect = new SkillEffects('poison', 85);
 
-export class Poisma extends Skill {
+export class Poisma extends AilmentSkill {
     constructor() {
-        super("Poisma", "Chance of inflicting Poison to 1 foe", "Ailm", 10, [], 70, 0, [], [poismaEffect], false, false, false, '');
+        super("Poisma", "Chance of inflicting Poison to 1 foe", 10, "single", [poismaEffect], '');
     }
 }

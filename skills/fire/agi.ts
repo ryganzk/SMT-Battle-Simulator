@@ -1,7 +1,7 @@
-import {Skill} from "../../structures/skills/skill";
+import {AttackSkill} from "../../structures/skills/attack_skill";
 
-export class Agi extends Skill {
+export class Agi extends AttackSkill {
     constructor() {
-        super("Agi", "Weak Fire attack to 1 foe", "Fire", 10, [130], 98, 0, [], [], false, false, false, '');
+        super("Agi", "Weak Fire attack to 1 foe", "Fire", 10, "single", [130], 98, 0, 0, [], [], false, '');
     }
 }
