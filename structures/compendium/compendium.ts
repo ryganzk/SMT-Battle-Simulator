@@ -17,7 +17,7 @@ function applyMixins(derivedCtor: any, baseCtors: any[]) {
 
 export class Compendium implements DemonCompendium, SkillCompendium, ItemCompendium {
     getSkill!: (skillName: string) => Skill;
-    summonDemon!: (demName: string) => Demon;
+    summonDemon!: (demName: string, maxLevel: number) => Demon;
     giveItem!: (itemName: string) => Item;
 }
 
