@@ -3,6 +3,9 @@ import {Skill} from "../skills/skill";
 //PHYSICAL SKILLS
 import {Lunge} from "../../skills/physical/lunge"
 import {BestialBite} from "../../skills/physical/bestial_bite"
+import {HellishSlash} from "../../skills/physical/hellish_slash"
+import {GramSlice} from "../../skills/physical/gram_slice"
+import {DreamNeedle} from "../../skills/physical/dream_needle"
 
 //FIRE SKILLS
 import {Agi} from "../../skills/fire/agi"
@@ -26,6 +29,9 @@ import {Mudo} from "../../skills/dark/mudo"
 import {LifeDrain} from "../../skills/almighty/life_drain"
 
 //AILMENT SKILLS
+import {Makajama} from "../../skills/ailment/makajama";
+import {MarinKarin} from "../../skills/ailment/marin_karin";
+import {Dormina} from "../../skills/ailment/dormina"
 import {Pulinpa} from "../../skills/ailment/pulinpa"
 import {Poisma} from "../../skills/ailment/poisma"
 import {Dustoma} from "../../skills/ailment/dustoma"
@@ -42,7 +48,6 @@ import {Rakunda} from "../../skills/support/rakunda"
 import {Sukukaja} from "../../skills/support/sukukaja"
 import {Sukunda} from "../../skills/support/sukunda"
 
-
 //PASSIVE SKILLS
 
 export class SkillCompendium {
@@ -53,6 +58,12 @@ export class SkillCompendium {
                 return new Lunge();
             case 'bestialbite':
                 return new BestialBite();
+            case 'hellishslash':
+                return new HellishSlash();
+            case 'gramslice':
+                return new GramSlice();
+            case 'dreamneedle':
+                return new DreamNeedle();
             case 'agi':
                 return new Agi();
             case 'bufu':
@@ -65,6 +76,12 @@ export class SkillCompendium {
                 return new Hama();
             case 'mudo':
                 return new Mudo();
+            case 'makajama':
+                return new Makajama();
+            case 'marinkarin':
+                return new MarinKarin();
+            case 'dormina':
+                return new Dormina();
             case 'lifedrain':
                 return new LifeDrain();
             case 'pulinpa':
