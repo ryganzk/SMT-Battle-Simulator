@@ -5,7 +5,7 @@ import {Player} from "../characters/player";
 import {Demon} from "../characters/demon";
 import {Compendium} from "../compendium/compendium";
 
-export function readFile(fileName: string): Player {
+export function readFile(fileName: string, maxLevel: number): Player {
     let compendium = new Compendium();
     let readPlayer = true;
     let player!: Player;
@@ -27,16 +27,22 @@ export function readFile(fileName: string): Player {
     }
 
     let readLevel = function(entity: Player | Demon, line: string): number {
-        let reader = ''; let numString = '';
+        let reader = ''; let numString = ''
         for(let i = 0; i < line.length; i++) {
             if (line[i] === '|') {
-                console.log(entity.name.toUpperCase(), "LEVEL SET TO", numString);
-                entity.setLevel(parseInt(numString));
-                return reader.length;
+                console.log(entity.name.toUpperCase(), "LEVEL SET TO", numString)
+                let level = parseInt(numString)
+
+                if(level > maxLevel) {
+                    throw new Error(entity.name + "'S LEVEL CANNOT BE SET HIGHER THAN " + maxLevel)
+                }
+
+                entity.setLevel(level)
+                return reader.length
             }
             else if (reader.toLowerCase() === 'level') {
                 if(line[i] >= '0' && line[i] <= '9') {
-                    numString = numString.concat(line.charAt(i));
+                    numString = numString.concat(line.charAt(i))
                 }
             }
             else {
@@ -122,19 +128,19 @@ export function readFile(fileName: string): Player {
             console.log("REDUCED LINE:", arr[i]);
 
             let demName = readDemon(arr[i])
-            player.setResistances(compendium.summonDemon(demName))
+            player.setResistances(compendium.summonDemon(demName, maxLevel))
             arr[i] = arr[i].substring(demName.length + 1);
             console.log("REDUCED LINE:", arr[i]);
 
             demName = readDemon(arr[i]);
-            player.setPotential(compendium.summonDemon(demName))
+            player.setPotential(compendium.summonDemon(demName, maxLevel))
             readPlayer = false;
         }
 
         //Creates Demon object if line isn't empty or full of hyphens
         else if(arr[i].replace(/-|\s+/g, '') != '') {
             let demName = readDemon(arr[i])
-            let demon = compendium.summonDemon(demName);
+            let demon = compendium.summonDemon(demName, maxLevel);
             player.addDemon(demon);
             console.log(demName.toUpperCase(), "DEMON CREATED! LIST CONTAINS", player.getDemonListLength(), "DEMONS!");
 
