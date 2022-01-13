@@ -1,7 +1,7 @@
 export class SkillEffects {
-    effect: string; result: string;
+    effect: string; result: number | string;
 
-    constructor(effect: string, result: string) {
+    constructor(effect: string, result: number | string) {
         this.effect = effect;
         this.result = result;
     }
