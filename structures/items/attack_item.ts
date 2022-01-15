@@ -5,8 +5,8 @@ export class AttackItem extends Item {
     description: string; type: string;
     multiTarget: boolean;
 
-    constructor(name: string, description: string, type: string, damage: number, accuracy: number, ikChance: number, multiTarget: boolean){
-        super(name);
+    constructor(name: string, description: string, amount: number, type: string, damage: number, accuracy: number, ikChance: number, multiTarget: boolean){
+        super(name, amount);
         this.description = description;
         this.type = type;
         this.damage = damage;
