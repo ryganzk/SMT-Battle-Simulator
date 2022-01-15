@@ -2,6 +2,7 @@ import {Skill} from "../skills/skill"
 import {TypeResistances} from "../resistances/type_resistances"
 import {AilResistances} from "../resistances/ail_resistances"
 import {SkillPotential} from "../skills/skill_potential"
+import {ItemStock} from "../items/item_stock"
 
 const HP_MP_POINTS_PER_LEVEL_UP = 8
 const STAT_POINTS_PER_LEVEL_UP = 5
@@ -13,7 +14,8 @@ export class PartyMember {
     skillList: Skill[]
     typeResistances: TypeResistances
     ailResistances: AilResistances
-    skillPotential: SkillPotential 
+    skillPotential: SkillPotential
+    itemStock: ItemStock
 
     getName(): string {
         return this.name
@@ -157,5 +159,13 @@ export class PartyMember {
 
     addSkill(skill: Skill) {
         this.skillList.push(skill)
+    }
+
+    getItemStock() {
+        return this.itemStock
+    }
+
+    setItemStock(itemStock: ItemStock) {
+        this.itemStock = itemStock
     }
 }
