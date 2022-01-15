@@ -33,56 +33,90 @@ import {AmritaSoda} from "../../items/recovery/amrita_soda";
 //SUPPORT ITEMS
 
 export class ItemCompendium {
-    giveItem(itemName: string): Item {
+    giveItem(itemName: string, amount: number): Item {
         switch(itemName.toLowerCase()) {
             case "fire shard":
-                return new FireShard();
+                return new FireShard(amount);
             case "ice shard":
-                return new IceShard();
+                return new IceShard(amount);
             case "elec shard":
-                return new ElecShard();
+                return new ElecShard(amount);
             case "force shard":
-                return new ForceShard();
+                return new ForceShard(amount);
             case "light shard":
-                return new LightShard();
+                return new LightShard(amount);
             case "dark shard":
-                return new DarkShard();
+                return new DarkShard(amount);
             case "fire gem":
-                return new FireGem();
+                return new FireGem(amount);
             case "ice gem":
-                return new IceGem();
+                return new IceGem(amount);
             case "elec gem":
-                return new ElecGem();
+                return new ElecGem(amount);
             case "force gem":
-                return new ForceGem();
+                return new ForceGem(amount);
             case "light gem":
-                return new LightGem();
+                return new LightGem(amount);
             case "dark gem":
-                return new DarkGem();
+                return new DarkGem(amount);
             case "phys dampener":
-                return new PhysDampener();
+                return new PhysDampener(amount);
             case "fire dampener":
-                return new FireDampener();
+                return new FireDampener(amount);
             case "ice dampener":
-                return new IceDampener();
+                return new IceDampener(amount);
             case "elec dampener":
-                return new ElecDampener();
+                return new ElecDampener(amount);
             case "force dampener":
-                return new ForceDampener();
+                return new ForceDampener(amount);
             case "light dampener":
-                return new LightDampener();
+                return new LightDampener(amount);
             case "dark dampener":
-                return new DarkDampener();
+                return new DarkDampener(amount);
             case "bead":
-                return new Bead();
+                return new Bead(amount);
             case "chakra drop":
-                return new ChakraDrop();
+                return new ChakraDrop(amount);
             case "chakra pot":
-                return new ChakraPot();
+                return new ChakraPot(amount);
             case "amrita soda":
-                return new AmritaSoda();
+                return new AmritaSoda(amount);
             default:
                 throw new Error("AN ITEM WITH THE NAME \"" + itemName.toUpperCase() + "\" DOES NOT EXIST!")
         }
+    }
+
+    giveShards(amount: number) {
+        let shards: Item[] = []
+        shards.push(this.giveItem('fire shard', amount))
+        shards.push(this.giveItem('ice shard', amount))
+        shards.push(this.giveItem('elec shard', amount))
+        shards.push(this.giveItem('force shard', amount))
+        shards.push(this.giveItem('light shard', amount))
+        shards.push(this.giveItem('dark shard', amount))
+        return shards
+    }
+
+    giveGems(amount: number) {
+        let gems: Item[] = []
+        gems.push(this.giveItem('fire gem', amount))
+        gems.push(this.giveItem('ice gem', amount))
+        gems.push(this.giveItem('elec gem', amount))
+        gems.push(this.giveItem('force gem', amount))
+        gems.push(this.giveItem('light gem', amount))
+        gems.push(this.giveItem('dark gem', amount))
+        return gems
+    }
+
+    giveDampeners(amount: number) {
+        let dampeners: Item[] = []
+        dampeners.push(this.giveItem('phys dampener', amount))
+        dampeners.push(this.giveItem('fire dampener', amount))
+        dampeners.push(this.giveItem('ice dampener', amount))
+        dampeners.push(this.giveItem('elec dampener', amount))
+        dampeners.push(this.giveItem('force dampener', amount))
+        dampeners.push(this.giveItem('light dampener', amount))
+        dampeners.push(this.giveItem('dark dampener', amount))
+        return dampeners
     }
 }
